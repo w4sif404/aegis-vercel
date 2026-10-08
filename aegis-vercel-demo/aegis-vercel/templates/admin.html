@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block title %}Admin Console — Aegis{% endblock %}{% block content %}
+<section class="pagehero"><div class="eyebrow">LEGACY ADMIN CONSOLE</div><h1>Content deployment</h1><p>Training environment — this console is intentionally unauthenticated for demonstration purposes.</p></section>
+<section class="section"><div class="adminbox">
+<h2>Legacy asset uploader</h2>
+<p>Upload a demonstration HTML/TXT file to flip the homepage into COMPROMISED mode, and optionally set the headline text that will be displayed. This never executes or serves the uploaded file's contents — only its presence matters.</p>
+<form method="post" enctype="multipart/form-data">
+  <label for="file">Demonstration file</label>
+  <input type="file" id="file" name="file" accept=".html,.txt" required>
+  <label for="headline">Headline text (shown on the defaced homepage)</label>
+  <input type="text" id="headline" name="headline" maxlength="120" placeholder="SYSTEM COMPROMISED">
+  <button class="btn" type="submit">Deploy asset</button>
+</form>
+<hr>
+<p><strong>Instructor reset:</strong> <a href="/demo/reset">restore original website</a></p>
+<p>Live mode: <strong>{{ "COMPROMISED" if state.compromised else "ORIGINAL" }}</strong></p>
+</div></section>
+{% endblock %}
